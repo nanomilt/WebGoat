@@ -8,8 +8,8 @@ webgoat.customjs.idorViewProfile = function(data) {
     );
 }
 
-var onViewProfile = function () {
-    console.warn("on view profile activated")
+const onViewProfile = function () {
+    console.warn("on view profile activated");
     webgoat.customjs.jquery.ajax({
         method: "GET",
         url: "IDOR/profile",

@@ -72,15 +72,13 @@ webgoat.customjs.jwtSigningCallback = function () {
 function vote(title) {
     var user = $("#name").text();
     if (user === 'Guest') {
-        alert("As a guest you are not allowed to vote, please login first.")
+        alert("As a guest you are not allowed to vote, please login first.");
     } else {
         $.ajax({
             type: 'POST',
             url: 'JWT/votings/' + title
-        }).then(
-            function () {
-                getVotings();
-            }
-        )
+        }).then(function () {
+            getVotings();
+        });
     }
 }
