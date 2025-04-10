@@ -30,7 +30,7 @@ $(document).ready(function () {
     getServers('id');
 });
 
-var html = '<tr class="STATUS">' +
+const html = '<tr class="STATUS">' +
     '<td class="col-check"><input type="checkbox" class="form-check-input"/></td>' +
     '<td>HOSTNAME</td>' +
     '<td>IP</td>' +
@@ -42,14 +42,14 @@ var html = '<tr class="STATUS">' +
 function getServers(column) {
     $.get("SqlInjectionMitigations/servers?column=" + column, function (result, status) {
         $("#servers").empty();
-        for (var i = 0; i < result.length; i++) {
-            var server = html.replace('ID', result[i].id);
-            var status = "success";
+        for (let i = 0; i < result.length; i++) {
+            let server = html.replace('ID', result[i].id);
+            let serverStatus = "success";
             if (result[i].status === 'offline') {
-                status = "danger";
+                serverStatus = "danger";
             }
-            server = server.replace('ONLINE', status);
-            server = server.replace('STATUS', status);
+            server = server.replace('ONLINE', serverStatus);
+            server = server.replace('STATUS', serverStatus);
             server = server.replace('HOSTNAME', result[i].hostname);
             server = server.replace('IP', result[i].ip);
             server = server.replace('MAC', result[i].mac);

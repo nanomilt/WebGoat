@@ -38,7 +38,7 @@ $(document).ready(function () {
     })
     $(".checkoutCode").on("blur", function () {
         var checkoutCode = $(".checkoutCode").val();
-        $.get("clientSideFiltering/challenge-store/coupons/" + checkoutCode, function (result, status) {
+        $.get("clientSideFiltering/challenge-store/coupons/" + checkoutCode, function (result) {
             var discount = result.discount;
             if (discount > 0) {
                 $('#discount').text(discount);
@@ -52,7 +52,6 @@ $(document).ready(function () {
 
     function calculate() {
         var d = $('#discount').text();
-        var price = $('#price').val();
         var quantity = parseInt($(".quantity").val());
         if (d > 0) {
             $('#price').text((quantity * (899 - (899 * d / 100))).toFixed(2));

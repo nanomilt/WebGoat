@@ -1,7 +1,7 @@
 function getCookieValue() {
 	var cookie = document.cookie.match(new RegExp('(^| )spoof_auth=([^;]+)'));
 	if (cookie != null)
-		return [2];
+		return cookie[2];
 	return null;
 }
 
@@ -17,7 +17,7 @@ function cleanup() {
 var target = document.getElementById('spoof_attack_feedback');
 
 var obs = new MutationObserver(function(mutations) {
-	mutations.forEach(function() {
+	mutations.forEach(function(mutation) {
 		var cookie = getCookieValue();
 		if (cookie) {
 			$('#spoof_username').prop('disabled', true);

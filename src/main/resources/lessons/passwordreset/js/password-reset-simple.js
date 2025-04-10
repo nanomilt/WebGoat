@@ -1,3 +1,6 @@
+// Declare the global variables
+/* global $ */
+
 function showPasswordReset() {
     $('#password-reset').show();
     $('#password-login').hide();

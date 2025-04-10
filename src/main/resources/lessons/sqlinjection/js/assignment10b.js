@@ -8,8 +8,6 @@ $(document).ready( () => {
             $("#codesubmit input[name='editor']").val(ace_collect());
         }, 20);
     });
-
-
 });
 
 function ace_collect() {

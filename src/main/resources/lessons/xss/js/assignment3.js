@@ -21,11 +21,11 @@ $(document).ready( () => {
         "        <tbody>\n" +
         "            <tr>\n" +
         "                <td><b>First Name:</b></td>\n" +
-        "                <td>YOUR CODE HERE</td>\n" +
+        "                <td><input type='text' name='firstName'></td>\n" +
         "            </tr>\n" +
         "            <tr>\n" +
         "                <td><b>Last Name:</b></td>\n" +
-        "                <td>YOUR CODE HERE</td>\n" +
+        "                <td><input type='text' name='lastName'></td>\n" +
         "            </tr>\n" +
         "        </tbody>\n" +
         "    </table>\n" +
