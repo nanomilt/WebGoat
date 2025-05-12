@@ -1,5 +1,5 @@
 webgoat.customjs.feedback = function() {
-    var data = {};
+    const data = {};
     $('#csrf-feedback').find('input, textarea, select').each(function(i, field) {
         data[field.name] = field.value;
     });

@@ -1,4 +1,4 @@
-function startFollowing(user) {
+function startFollowing(user: string) {
     $.ajax({
         type: 'POST',
         url: 'JWT/kid/follow/' + user

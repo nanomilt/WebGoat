@@ -1,16 +1,21 @@
 $(function() {
+    // Declare variables globally
+    let $loginFormLink, $registerFormLink;
 
-    $('#login-form-link').click(function(e) {
+    $loginFormLink = $('#login-form-link');
+    $registerFormLink = $('#register-form-link');
+
+    $loginFormLink.click(function(e) {
         $("#login-form").delay(100).fadeIn(100);
         $("#register-form").fadeOut(100);
-        $('#register-form-link').removeClass('active');
+        $registerFormLink.removeClass('active');
         $(this).addClass('active');
         e.preventDefault();
     });
-    $('#register-form-link').click(function(e) {
+    $registerFormLink.click(function(e) {
         $("#register-form").delay(100).fadeIn(100);
         $("#login-form").fadeOut(100);
-        $('#login-form-link').removeClass('active');
+        $loginFormLink.removeClass('active');
         $(this).addClass('active');
         e.preventDefault();
     });

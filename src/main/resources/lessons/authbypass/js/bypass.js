@@ -5,7 +5,7 @@ webgoat.customjs.onBypassResponse = function(data) {
     webgoat.customjs.jquery('#change-password-form').show();
 }
 
-var onViewProfile = function () {
+const onViewProfile = function () {
     console.warn("on view profile activated")
     webgoat.customjs.jquery.ajax({
         method: "GET",
