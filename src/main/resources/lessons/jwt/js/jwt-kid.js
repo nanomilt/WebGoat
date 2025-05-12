@@ -4,5 +4,5 @@ function startFollowing(user) {
         url: 'JWT/kid/follow/' + user
     }).then(function (result) {
         $("#toast").append(result);
-    })
+    });
 }

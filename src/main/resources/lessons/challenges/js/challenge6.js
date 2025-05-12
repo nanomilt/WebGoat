@@ -1,18 +1,21 @@
 $(function() {
+    var $loginFormLink = $('#login-form-link');
+    var $registerFormLink = $('#register-form-link');
+    var $loginForm = $("#login-form");
+    var $registerForm = $("#register-form");
 
-    $('#login-form-link').click(function(e) {
-        $("#login-form").delay(100).fadeIn(100);
-        $("#register-form").fadeOut(100);
-        $('#register-form-link').removeClass('active');
+    $loginFormLink.click(function(e) {
+        $loginForm.delay(100).fadeIn(100);
+        $registerForm.fadeOut(100);
+        $registerFormLink.removeClass('active');
         $(this).addClass('active');
         e.preventDefault();
     });
-    $('#register-form-link').click(function(e) {
-        $("#register-form").delay(100).fadeIn(100);
-        $("#login-form").fadeOut(100);
-        $('#login-form-link').removeClass('active');
+    $registerFormLink.click(function(e) {
+        $registerForm.delay(100).fadeIn(100);
+        $loginForm.fadeOut(100);
+        $loginFormLink.removeClass('active');
         $(this).addClass('active');
         e.preventDefault();
     });
-
 });

@@ -51,11 +51,11 @@ $(document).ready(function () {
     })
 
     function calculate() {
-        var d = $('#discount').text();
-        var price = $('#price').val();
+        var discount = $('#discount').text();
+        var price = $('#price').text();
         var quantity = parseInt($(".quantity").val());
-        if (d > 0) {
-            $('#price').text((quantity * (899 - (899 * d / 100))).toFixed(2));
+        if (discount > 0) {
+            $('#price').text((quantity * (899 - (899 * discount / 100))).toFixed(2));
 
         } else {
             $('#price').text(quantity * 899);

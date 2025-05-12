@@ -11,7 +11,8 @@ webgoat.customjs.profileUpload = function () {
 
 webgoat.customjs.profileUploadCallback = function () {
     $.get("PathTraversal/profile-picture", function (result, status) {
-        document.getElementById("preview").src = "data:image/png;base64," + result;
+        var preview = document.getElementById("preview");
+        preview.src = "data:image/png;base64," + result;
     });
 }
 
@@ -27,7 +28,8 @@ webgoat.customjs.profileUploadFix = function () {
 
 webgoat.customjs.profileUploadCallbackFix = function () {
     $.get("PathTraversal/profile-picture", function (result, status) {
-        document.getElementById("previewFix").src = "data:image/png;base64," + result;
+        var previewFix = document.getElementById("previewFix");
+        previewFix.src = "data:image/png;base64," + result;
     });
 }
 
@@ -44,20 +46,23 @@ webgoat.customjs.profileUploadRemoveUserInput = function () {
 
 webgoat.customjs.profileUploadCallbackRemoveUserInput = function () {
     $.get("PathTraversal/profile-picture", function (result, status) {
-        document.getElementById("previewRemoveUserInput").src = "data:image/png;base64," + result;
+        var previewRemoveUserInput = document.getElementById("previewRemoveUserInput");
+        previewRemoveUserInput.src = "data:image/png;base64," + result;
     });
 }
 
 
 webgoat.customjs.profileUploadCallbackRetrieval = function () {
     $.get("PathTraversal/profile-picture", function (result, status) {
-        document.getElementById("previewRetrieval").src = "data:image/png;base64," + result;
+        var previewRetrieval = document.getElementById("previewRetrieval");
+        previewRetrieval.src = "data:image/png;base64," + result;
     });
 }
 
 function newRandomPicture() {
     $.get("PathTraversal/random-picture", function (result, status) {
-        document.getElementById("randomCatPicture").src = "data:image/png;base64," + result;
+        var randomCatPicture = document.getElementById("randomCatPicture");
+        randomCatPicture.src = "data:image/png;base64," + result;
     });
 }
 

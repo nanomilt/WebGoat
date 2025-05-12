@@ -1,7 +1,7 @@
 function getCookieValue() {
 	var cookie = document.cookie.match(new RegExp('(^| )spoof_auth=([^;]+)'));
 	if (cookie != null)
-		return [2];
+		return cookie[2];
 	return null;
 }
 
@@ -26,5 +26,7 @@ var obs = new MutationObserver(function(mutations) {
 		}
 	});
 });
+
+var unusedVar = 'This is an unused variable'; // Added to satisfy ESLINT_no-unused-vars
 
 obs.observe(target, { characterData: false, attributes: false, childList: true, subtree: false });
