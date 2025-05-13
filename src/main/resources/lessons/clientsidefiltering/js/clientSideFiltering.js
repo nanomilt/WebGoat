@@ -24,7 +24,7 @@ function ajaxFunction(userId) {
         html = html + '<td>Salary</td>';
 
         for (var i = 0; i < result.length; i++) {
-            html = html + '<tr id = "' + result[i].UserID + '"</tr>';
+            html = html + '<tr id = "' + result[i].UserID + '">';
             html = html + '<td>' + result[i].UserID + '</td>';
             html = html + '<td>' + result[i].FirstName + '</td>';
             html = html + '<td>' + result[i].LastName + '</td>';
@@ -32,7 +32,7 @@ function ajaxFunction(userId) {
             html = html + '<td>' + result[i].Salary + '</td>';
             html = html + '</tr>';
         }
-        html = html + '</tr></table>';
+        html = html + '</table>';
 
         var newdiv = document.createElement("div");
         newdiv.innerHTML = html;

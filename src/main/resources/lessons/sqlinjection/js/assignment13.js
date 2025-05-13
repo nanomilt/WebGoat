@@ -44,12 +44,12 @@ function getServers(column) {
         $("#servers").empty();
         for (var i = 0; i < result.length; i++) {
             var server = html.replace('ID', result[i].id);
-            var status = "success";
+            var serverStatus = "success";
             if (result[i].status === 'offline') {
-                status = "danger";
+                serverStatus = "danger";
             }
-            server = server.replace('ONLINE', status);
-            server = server.replace('STATUS', status);
+            server = server.replace('ONLINE', serverStatus);
+            server = server.replace('STATUS', serverStatus);
             server = server.replace('HOSTNAME', result[i].hostname);
             server = server.replace('IP', result[i].ip);
             server = server.replace('MAC', result[i].mac);
