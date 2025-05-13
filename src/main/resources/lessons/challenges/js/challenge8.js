@@ -5,15 +5,15 @@ $(document).ready(function () {
 
 function loadVotes() {
     $.get("challenge/8/votes/", function (votes) {
-            var totalVotes = 0;
-            for (var i = 1; i <= 5; i++) {
+            let totalVotes = 0;
+            for (let i = 1; i <= 5; i++) {
                 totalVotes = totalVotes + votes[i];
             }
             console.log(totalVotes);
-            for (var i = 1; i <= 5; i++) {
-                var percent = votes[i] * 100 / totalVotes;
+            for (let i = 1; i <= 5; i++) {
+                const percent = votes[i] * 100 / totalVotes;
                 console.log(percent);
-                var progressBar = $('#progressBar' + i);
+                const progressBar = $('#progressBar' + i);
                 progressBar.width(Math.round(percent) * 2 + '%');
                 $("#nrOfVotes" + i).html(votes[i]);
 
@@ -24,8 +24,8 @@ function loadVotes() {
 
 function average() {
     $.get("challenge/8/votes/average", function (average) {
-            for (var i = 1; i <= 5; i++) {
-                var number = average["average"];
+            for (let i = 1; i <= 5; i++) {
+                const number = average["average"];
                 $("#star" + i).removeClass('btn-warning');
                 $("#star" + i).removeClass('btn-default');
                 $("#star" + i).removeClass('btn-grey');

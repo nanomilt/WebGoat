@@ -6,10 +6,10 @@ webgoat.customjs.onBypassResponse = function(data) {
 }
 
 var onViewProfile = function () {
-    console.warn("on view profile activated")
+    console.warn("on view profile activated");
     webgoat.customjs.jquery.ajax({
         method: "GET",
         url: "IDOR/profile",
         contentType: 'application/json; charset=UTF-8'
-     }).then(webgoat.customjs.idorViewProfile);
+    }).then(webgoat.customjs.idorViewProfile);
 }

@@ -18,8 +18,8 @@ $(document).ready(function () {
         var piecePrice = $("#piecePrice2").text();
         $('#totalPrice2').text((quantity * piecePrice).toFixed(2));
         updateTotal();
-    })
-})
+    });
+});
 
 function updateTotal() {
     var price1 = parseFloat($('#totalPrice1').text());
@@ -28,6 +28,4 @@ function updateTotal() {
     $('#subtotalJwt').text(subTotal.toFixed(2));
     var total = subTotal + 6.94;
     $('#totalJwt').text(total.toFixed(2));
-
-
 }

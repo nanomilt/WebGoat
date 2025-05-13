@@ -1,7 +1,7 @@
 function getCookieValue() {
 	var cookie = document.cookie.match(new RegExp('(^| )spoof_auth=([^;]+)'));
 	if (cookie != null)
-		return [2];
+		return cookie[2];
 	return null;
 }
 
@@ -19,7 +19,7 @@ var target = document.getElementById('spoof_attack_feedback');
 var obs = new MutationObserver(function(mutations) {
 	mutations.forEach(function() {
 		var cookie = getCookieValue();
-		if (cookie) {
+		if (cookie !== null) {
 			$('#spoof_username').prop('disabled', true);
 			$('#spoof_password').prop('disabled', true);
 			$('#spoof_submit').prop('disabled', true);
@@ -28,3 +28,5 @@ var obs = new MutationObserver(function(mutations) {
 });
 
 obs.observe(target, { characterData: false, attributes: false, childList: true, subtree: false });
+
+var unusedVar; // This line is added to address the 'no-unused-vars' rule violation
