@@ -1,4 +1,5 @@
-// need custom js for this?
+var webgoat = webgoat || {};
+webgoat.customjs = webgoat.customjs || {};
 
 webgoat.customjs.idorViewProfile = function(data) {
     webgoat.customjs.jquery('#idor-profile').html(

@@ -1,25 +1,34 @@
 $(function () {
     $('.col-check').hide();
-    $('#btn-admin').on('click', function () {
-        if ($("#toolbar-admin").is(":visible")) {
-            $("#toolbar-admin").hide();
-            $(".col-check").hide();
+    var $btnAdmin = $('#btn-admin');
+    var $toolbarAdmin = $("#toolbar-admin");
+    var $colCheck = $(".col-check");
+
+    $btnAdmin.on('click', function () {
+        if ($toolbarAdmin.is(":visible")) {
+            $toolbarAdmin.hide();
+            $colCheck.hide();
         }
         else {
-            $("#toolbar-admin").show();
-            $(".col-check").show();
+            $toolbarAdmin.show();
+            $colCheck.show();
         }
     });
 
-    $('#btn-online').on('click', function () {
+    var $btnOnline = $('#btn-online');
+    $btnOnline.on('click', function () {
         $('table tr').filter(':has(:checkbox:checked)').find('td').parent().removeClass().addClass('success');
         $('table tr').filter(':has(:checkbox:checked)').find('td.status').text('online');
     });
-    $('#btn-offline').on('click', function () {
+
+    var $btnOffline = $('#btn-offline');
+    $btnOffline.on('click', function () {
         $('table tr').filter(':has(:checkbox:checked)').find('td').parent().removeClass().addClass('warning');
         $('table tr').filter(':has(:checkbox:checked)').find('td.status').text('offline');
     });
-    $('#btn-out-of-order').on('click', function () {
+
+    var $btnOutOfOrder = $('#btn-out-of-order');
+    $btnOutOfOrder.on('click', function () {
         $('table tr').filter(':has(:checkbox:checked)').find('td').parent().removeClass().addClass('danger');
         $('table tr').filter(':has(:checkbox:checked)').find('td.status').text('out of order');
     });

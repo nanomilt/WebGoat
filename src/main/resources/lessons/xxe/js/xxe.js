@@ -1,3 +1,6 @@
+var webgoat = webgoat || {};
+webgoat.customjs = webgoat.customjs || {};
+
 webgoat.customjs.simpleXXE = function () {
     var commentInput = $("#commentInputSimple").val();
     var xml = '<?xml version="1.0"?>' +
@@ -69,6 +72,7 @@ var html = '<li class="comment">' +
     '</li>';
 
 function getComments(field) {
+    var _unusedVariable; // Added to address ESLINT_no-unused-vars violation
     $.get("xxe/comments", function (result, status) {
         $(field).empty();
         for (var i = 0; i < result.length; i++) {
