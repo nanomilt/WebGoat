@@ -1,6 +1,6 @@
 $(document).ready( () => {
 
-    var editor = ace.edit("editor");
+    let editor = ace.edit("editor");
     editor.setTheme("ace/theme/monokai");
     editor.session.setMode("ace/mode/html");
 
@@ -38,7 +38,7 @@ $(document).ready( () => {
 });
 
 function ace_collect() {
-    var editor = ace.edit("editor");
-    var code = editor.getValue();
+    let editor = ace.edit("editor");
+    let code = editor.getValue();
     return code;
 }

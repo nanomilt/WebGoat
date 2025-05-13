@@ -1,7 +1,6 @@
 var dataFetched = false;
 
 function selectUser() {
-
     var newEmployeeID = $("#UserSelect").val();
     document.getElementById("employeeRecord").innerHTML = document.getElementById(newEmployeeID).innerHTML;
 }
@@ -14,7 +13,7 @@ function fetchUserData() {
 }
 
 function ajaxFunction(userId) {
-    $.get("clientSideFiltering/salaries?userId=" + userId, function (result, status) {
+    $.get("clientSideFiltering/salaries?userId=" + userId, function (result) {
         var html = "<table border = '1' width = '90%' align = 'center'";
         html = html + '<tr>';
         html = html + '<td>UserID</td>';
