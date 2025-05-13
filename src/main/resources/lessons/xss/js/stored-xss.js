@@ -39,7 +39,6 @@ $(document).ready(function () {
                 comment = comment.replace('COMMENT', result[i].text);
                 $("#list").append(comment);
             }
-
         });
     }
 })

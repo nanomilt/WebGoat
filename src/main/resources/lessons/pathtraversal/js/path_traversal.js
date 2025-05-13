@@ -11,7 +11,8 @@ webgoat.customjs.profileUpload = function () {
 
 webgoat.customjs.profileUploadCallback = function () {
     $.get("PathTraversal/profile-picture", function (result, status) {
-        document.getElementById("preview").src = "data:image/png;base64," + result;
+        var previewElement = document.getElementById("preview");
+        previewElement.src = "data:image/png;base64," + result;
     });
 }
 
@@ -27,7 +28,8 @@ webgoat.customjs.profileUploadFix = function () {
 
 webgoat.customjs.profileUploadCallbackFix = function () {
     $.get("PathTraversal/profile-picture", function (result, status) {
-        document.getElementById("previewFix").src = "data:image/png;base64," + result;
+        var previewFixElement = document.getElementById("previewFix");
+        previewFixElement.src = "data:image/png;base64," + result;
     });
 }
 
@@ -44,20 +46,23 @@ webgoat.customjs.profileUploadRemoveUserInput = function () {
 
 webgoat.customjs.profileUploadCallbackRemoveUserInput = function () {
     $.get("PathTraversal/profile-picture", function (result, status) {
-        document.getElementById("previewRemoveUserInput").src = "data:image/png;base64," + result;
+        var previewRemoveUserInputElement = document.getElementById("previewRemoveUserInput");
+        previewRemoveUserInputElement.src = "data:image/png;base64," + result;
     });
 }
 
 
 webgoat.customjs.profileUploadCallbackRetrieval = function () {
     $.get("PathTraversal/profile-picture", function (result, status) {
-        document.getElementById("previewRetrieval").src = "data:image/png;base64," + result;
+        var previewRetrievalElement = document.getElementById("previewRetrieval");
+        previewRetrievalElement.src = "data:image/png;base64," + result;
     });
 }
 
 function newRandomPicture() {
     $.get("PathTraversal/random-picture", function (result, status) {
-        document.getElementById("randomCatPicture").src = "data:image/png;base64," + result;
+        var randomCatPictureElement = document.getElementById("randomCatPicture");
+        randomCatPictureElement.src = "data:image/png;base64," + result;
     });
 }
 

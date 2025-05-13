@@ -14,5 +14,10 @@ var onViewProfile = function () {
         method: "GET",
         url: "IDOR/profile",
         contentType: 'application/json; charset=UTF-8'
-     }).then(webgoat.customjs.idorViewProfile);
+    }).then(webgoat.customjs.idorViewProfile);
 }
+
+// globally declared a
+let a;
+let foo = someFunction();
+let bar = a + 1;
