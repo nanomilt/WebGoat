@@ -1,7 +1,7 @@
-var globally; // Declaring a global variable to avoid the 'no-undef' violation
+var globally = undefined; // Declaring a global variable to avoid the 'no-undef' violation
 
 webgoat.customjs.feedback = function() {
-    var data = {};
+    let data = {};
     $('#csrf-feedback').find('input, textarea, select').each(function(i, field) {
         data[field.name] = field.value;
     });
