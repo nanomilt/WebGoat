@@ -9,3 +9,5 @@ function submit_secret_credentials() {
         }
     };
 }
+
+submit_secret_credentials();
