@@ -3,14 +3,14 @@ $(document).ready(function () {
     $("ul.menu-items > li").on("click", function () {
         $("ul.menu-items > li").removeClass("active");
         $(this).addClass("active");
-    })
+    });
 
     $(".attr,.attr2").on("click", function () {
         var clase = $(this).attr("class");
 
         $("." + clase).removeClass("active");
         $(this).addClass("active");
-    })
+    });
 
     //-- Click on QUANTITY
     $(".btn-minus").on("click", function () {
@@ -26,7 +26,7 @@ $(document).ready(function () {
             $('#price').text(899);
         }
         calculate();
-    })
+    });
     $(".btn-plus").on("click", function () {
         var now = $(".quantity").val();
         if ($.isNumeric(now)) {
@@ -35,10 +35,10 @@ $(document).ready(function () {
             $(".quantity").val("1");
         }
         calculate();
-    })
+    });
     $(".checkoutCode").on("blur", function () {
         var checkoutCode = $(".checkoutCode").val();
-        $.get("clientSideFiltering/challenge-store/coupons/" + checkoutCode, function (result, status) {
+        $.get("clientSideFiltering/challenge-store/coupons/" + checkoutCode, function (result) {
             var discount = result.discount;
             if (discount > 0) {
                 $('#discount').text(discount);
@@ -48,7 +48,7 @@ $(document).ready(function () {
                 calculate();
             }
         });
-    })
+    });
 
     function calculate() {
         var d = $('#discount').text();
@@ -60,4 +60,4 @@ $(document).ready(function () {
             $('#price').text(quantity * 899);
         }
     }
-})
+});

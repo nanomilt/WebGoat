@@ -1,4 +1,4 @@
-var globally; // Declaring a global variable to avoid the 'no-undef' violation
+var globally = undefined; // Declaring a global variable to avoid the 'no-undef' violation
 
 webgoat.customjs.feedback = function() {
     var data = {};
