@@ -1,7 +1,8 @@
-webgoat.customjs.profileUpload = function () {
+'use strict';
 
-    var picture = document.getElementById("uploadedFile").files[0];
-    var formData = new FormData();
+webgoat.customjs.profileUpload = function () {
+    const picture = document.getElementById("uploadedFile").files[0];
+    const formData = new FormData();
     formData.append("uploadedFile", picture);
     formData.append("fullName", $("#fullName").val());
     formData.append("email", $("#email").val());
@@ -10,14 +11,14 @@ webgoat.customjs.profileUpload = function () {
 }
 
 webgoat.customjs.profileUploadCallback = function () {
-    $.get("PathTraversal/profile-picture", function (result, status) {
+    $.get("PathTraversal/profile-picture", function (result) {
         document.getElementById("preview").src = "data:image/png;base64," + result;
     });
 }
 
 webgoat.customjs.profileUploadFix = function () {
-    var picture = document.getElementById("uploadedFileFix").files[0];
-    var formData = new FormData();
+    const picture = document.getElementById("uploadedFileFix").files[0];
+    const formData = new FormData();
     formData.append("uploadedFileFix", picture);
     formData.append("fullNameFix", $("#fullNameFix").val());
     formData.append("emailFix", $("#emailFix").val());
@@ -26,15 +27,15 @@ webgoat.customjs.profileUploadFix = function () {
 }
 
 webgoat.customjs.profileUploadCallbackFix = function () {
-    $.get("PathTraversal/profile-picture", function (result, status) {
+    $.get("PathTraversal/profile-picture", function (result) {
         document.getElementById("previewFix").src = "data:image/png;base64," + result;
     });
 }
 
 
 webgoat.customjs.profileUploadRemoveUserInput = function () {
-    var picture = document.getElementById("uploadedFileRemoveUserInput").files[0];
-    var formData = new FormData();
+    const picture = document.getElementById("uploadedFileRemoveUserInput").files[0];
+    const formData = new FormData();
     formData.append("uploadedFileRemoveUserInput", picture);
     formData.append("fullName", $("#fullNameRemoveUserInput").val());
     formData.append("email", $("#emailRemoveUserInput").val());
@@ -43,27 +44,27 @@ webgoat.customjs.profileUploadRemoveUserInput = function () {
 }
 
 webgoat.customjs.profileUploadCallbackRemoveUserInput = function () {
-    $.get("PathTraversal/profile-picture", function (result, status) {
+    $.get("PathTraversal/profile-picture", function (result) {
         document.getElementById("previewRemoveUserInput").src = "data:image/png;base64," + result;
     });
 }
 
 
 webgoat.customjs.profileUploadCallbackRetrieval = function () {
-    $.get("PathTraversal/profile-picture", function (result, status) {
+    $.get("PathTraversal/profile-picture", function (result) {
         document.getElementById("previewRetrieval").src = "data:image/png;base64," + result;
     });
 }
 
 function newRandomPicture() {
-    $.get("PathTraversal/random-picture", function (result, status) {
+    $.get("PathTraversal/random-picture", function (result) {
         document.getElementById("randomCatPicture").src = "data:image/png;base64," + result;
     });
 }
 
 webgoat.customjs.profileZipSlip = function () {
-    var picture = document.getElementById("uploadedFileZipSlip").files[0];
-    var formData = new FormData();
+    const picture = document.getElementById("uploadedFileZipSlip").files[0];
+    const formData = new FormData();
     formData.append("uploadedFileZipSlip", picture);
     formData.append("fullName", $("#fullNameZipSlip").val());
     formData.append("email", $("#emailZipSlip").val());

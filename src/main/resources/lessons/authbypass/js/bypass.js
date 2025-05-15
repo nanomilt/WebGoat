@@ -1,4 +1,4 @@
-// need custom js for this?
+'use strict';
 
 webgoat.customjs.onBypassResponse = function(data) {
     webgoat.customjs.jquery('#verify-account-form').hide();
