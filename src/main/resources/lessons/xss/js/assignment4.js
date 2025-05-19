@@ -1,4 +1,4 @@
-$(document).ready( () => {
+$(document).ready(() => {
 
     let editor2 = ace.edit("editor2");
     editor2.setTheme("ace/theme/monokai");

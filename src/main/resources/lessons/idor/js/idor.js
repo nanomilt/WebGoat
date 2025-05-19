@@ -10,7 +10,7 @@ webgoat.customjs.idorViewProfile = function(data) {
     );
 }
 
-var onViewProfile = function () {
+const onViewProfile = function () {
     console.warn("on view profile activated");
     webgoat.customjs.jquery.ajax({
         method: "GET",

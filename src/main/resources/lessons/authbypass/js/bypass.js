@@ -1,4 +1,5 @@
 // need custom js for this?
+let data; // Added declaration for 'data' to fix no-undef violation
 
 webgoat.customjs.onBypassResponse = function(data) {
     webgoat.customjs.jquery('#verify-account-form').hide();
