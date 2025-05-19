@@ -1,6 +1,7 @@
+/* eslint-disable no-unused-vars */
 webgoat.customjs.simpleXXE = function () {
-    var commentInput = $("#commentInputSimple").val();
-    var xml = '<?xml version="1.0"?>' +
+    const commentInput = $("#commentInputSimple").val();
+    const xml = '<?xml version="1.0"?>' +
         '<comment>' +
         '  <text>' + commentInput + '</text>' +
         '</comment>';
@@ -19,7 +20,7 @@ $(document).ready(function () {
 //// Content-type
 
 webgoat.customjs.contentTypeXXE = function() {
-    var commentInput = $("#commentInputContentType").val();
+    const commentInput = $("#commentInputContentType").val();
     return JSON.stringify({text: commentInput});
 }
 
@@ -36,8 +37,8 @@ $(document).ready(function () {
 //// Blind
 
 webgoat.customjs.blindXXE = function() {
-    var commentInput = $("#commentInputBlind").val();
-    var xml = '<?xml version="1.0"?>' +
+    const commentInput = $("#commentInputBlind").val();
+    const xml = '<?xml version="1.0"?>' +
         '<comment>' +
         '  <text>' + commentInput + '</text>' +
         '</comment>';
@@ -55,7 +56,7 @@ $(document).ready(function () {
 
 
 
-var html = '<li class="comment">' +
+const html = '<li class="comment">' +
     '<div class="pull-left">' +
     '<img class="avatar" src="images/avatar1.png" alt="avatar"/>' +
     '</div>' +
@@ -71,8 +72,8 @@ var html = '<li class="comment">' +
 function getComments(field) {
     $.get("xxe/comments", function (result, status) {
         $(field).empty();
-        for (var i = 0; i < result.length; i++) {
-            var comment = html.replace('USER', result[i].user);
+        for (let i = 0; i < result.length; i++) {
+            let comment = html.replace('USER', result[i].user);
             comment = comment.replace('DATETIME', result[i].dateTime);
             comment = comment.replace('COMMENT', result[i].text);
             $(field).append(comment);

@@ -1,3 +1,5 @@
+'use strict';
+
 $(document).ready(function () {
     loginVotes('Guest');
 })
@@ -40,7 +42,7 @@ var html = '<a href="#" class="list-group-item ACTIVE">' +
 
 function getVotings() {
     $("#votesList").empty();
-    $.get("JWT/votings", function (result, status) {
+    $.get("JWT/votings", function (result) {
         for (var i = 0; i < result.length; i++) {
             var voteTemplate = html.replace('IMAGE_SMALL', result[i].imageSmall);
             if (i === 0) {
