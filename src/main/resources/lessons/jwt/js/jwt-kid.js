@@ -2,9 +2,13 @@ function startFollowing(user) {
     let result;
     $.ajax({
         type: 'POST',
-        url: 'JWT/kid/follow/' + user
-    }).then(function (res) {
-        result = res;
-        $("#toast").append(result);
-    })
+        url: 'JWT/kid/follow/' + user,
+        success: function (res) {
+            result = res;
+            $("#toast").append(result);
+        },
+        error: function () {
+            console.log('Error occurred while following the user.');
+        }
+    });
 }

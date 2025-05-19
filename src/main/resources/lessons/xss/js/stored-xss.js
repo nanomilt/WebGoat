@@ -15,7 +15,7 @@ $(document).ready(function () {
         )
     })
 
-    let html = '<li class="comment">' +
+    const html = '<li class="comment">' +
         '<div class="pull-left">' +
         '<img class="avatar" src="images/avatar1.png" alt="avatar"/>' +
         '</div>' +

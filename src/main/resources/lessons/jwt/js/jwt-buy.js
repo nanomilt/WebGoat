@@ -5,7 +5,7 @@ $(document).ready(function () {
             $("#quantity1").val("1");
             quantity = 1;
         }
-        var piecePrice = $("#piecePrice1").text();
+        var piecePrice = parseFloat($("#piecePrice1").text());
         $('#totalPrice1').text((quantity * piecePrice).toFixed(2));
         updateTotal();
     });
@@ -15,7 +15,7 @@ $(document).ready(function () {
             $("#quantity2").val("1");
             quantity = 1;
         }
-        var piecePrice = $("#piecePrice2").text();
+        var piecePrice = parseFloat($("#piecePrice2").text());
         $('#totalPrice2').text((quantity * piecePrice).toFixed(2));
         updateTotal();
     });

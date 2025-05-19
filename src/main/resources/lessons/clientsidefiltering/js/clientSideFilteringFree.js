@@ -15,7 +15,7 @@ $(document).ready(function () {
     //-- Click on QUANTITY
     $(".btn-minus").on("click", function () {
         var now = $(".quantity").val();
-        if ($.isNumeric(now)) {
+        if (isNumeric(now)) {
             if (parseInt(now) - 1 > 0) {
                 now--;
             }
@@ -29,7 +29,7 @@ $(document).ready(function () {
     })
     $(".btn-plus").on("click", function () {
         var now = $(".quantity").val();
-        if ($.isNumeric(now)) {
+        if (isNumeric(now)) {
             $(".quantity").val(parseInt(now) + 1);
         } else {
             $(".quantity").val("1");
@@ -38,7 +38,7 @@ $(document).ready(function () {
     })
     $(".checkoutCode").on("blur", function () {
         var checkoutCode = $(".checkoutCode").val();
-        $.get("clientSideFiltering/challenge-store/coupons/" + checkoutCode, function (result, status) {
+        $.get("clientSideFiltering/challenge-store/coupons/" + checkoutCode, function (result) {
             var discount = result.discount;
             if (discount > 0) {
                 $('#discount').text(discount);
@@ -59,5 +59,9 @@ $(document).ready(function () {
         } else {
             $('#price').text(quantity * 899);
         }
+    }
+
+    function isNumeric(n) {
+        return !isNaN(parseFloat(n)) && isFinite(n);
     }
 })

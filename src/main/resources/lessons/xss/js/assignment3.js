@@ -1,11 +1,11 @@
-$(document).ready( () => {
+$(document).ready(function() {
 
-    var editor = ace.edit("editor");
+    let editor = ace.edit("editor");
     editor.setTheme("ace/theme/monokai");
     editor.session.setMode("ace/mode/html");
 
-    editor.getSession().on("change", () => {
-        setTimeout( () => {
+    editor.getSession().on("change", function() {
+        setTimeout(function() {
             $("#codesubmit input[name='editor']").val(ace_collect());
         }, 20);
     });
@@ -38,7 +38,7 @@ $(document).ready( () => {
 });
 
 function ace_collect() {
-    var editor = ace.edit("editor");
-    var code = editor.getValue();
+    let editor = ace.edit("editor");
+    let code = editor.getValue();
     return code;
 }
