@@ -5,7 +5,7 @@ $(document).ready(() => {
 
     editor.getSession().on("change", () => {
         setTimeout(() => {
-            $("#codesubmit input[name='editor']").val(ace_collect());
+            $("#codesubmit input[name='editor']").val(ace_collect(editor));
         }, 20);
     });
 });

@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    let commentInput;
     $("#postComment").on("click", function () {
         const commentInput = $("#commentInput").val();
         $.ajax({

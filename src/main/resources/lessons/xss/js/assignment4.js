@@ -24,7 +24,7 @@ $(document).ready(function() {
 });
 
 function ace_collect2() {
-    var editor = ace.edit("editor2");
-    var code = editor.getValue();
+    let editor = ace.edit("editor2");
+    let code = editor.getValue();
     return code;
 }
