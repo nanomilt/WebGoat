@@ -1,10 +1,10 @@
 $(document).ready(function () {
     $("#postComment").on("click", function () {
-        let commentInput = $("#commentInput").val();
+        const commentInput = $("#commentInput").val();
         $.ajax({
             type: 'POST',
             url: 'CrossSiteScriptingStored/stored-xss',
-            data: JSON.stringify({text: commentInput}),
+            data: JSON.stringify({ text: commentInput }),
             contentType: "application/json",
             dataType: 'json'
         }).then(
@@ -15,7 +15,7 @@ $(document).ready(function () {
         )
     })
 
-    let html = '<li class="comment">' +
+    const html = '<li class="comment">' +
         '<div class="pull-left">' +
         '<img class="avatar" src="images/avatar1.png" alt="avatar"/>' +
         '</div>' +
@@ -39,7 +39,6 @@ $(document).ready(function () {
                 comment = comment.replace('COMMENT', result[i].text);
                 $("#list").append(comment);
             }
-
         });
     }
 })

@@ -1,5 +1,8 @@
 // need custom js for this?
 
+let webgoat = window.webgoat || {};
+webgoat.customjs = webgoat.customjs || {};
+
 webgoat.customjs.idorViewProfile = function(data) {
     webgoat.customjs.jquery('#idor-profile').html(
         'name:' + data.name + '<br/>'+
@@ -8,7 +11,7 @@ webgoat.customjs.idorViewProfile = function(data) {
     );
 }
 
-var onViewProfile = function () {
+const onViewProfile = function () {
     console.warn("on view profile activated");
     webgoat.customjs.jquery.ajax({
         method: "GET",
