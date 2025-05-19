@@ -1,8 +1,8 @@
 $(function() {
-    let loginFormLink = $('#login-form-link');
-    let registerFormLink = $('#register-form-link');
-    let loginForm = $("#login-form");
-    let registerForm = $("#register-form");
+    const loginFormLink = $('#login-form-link');
+    const registerFormLink = $('#register-form-link');
+    const loginForm = $("#login-form");
+    const registerForm = $("#register-form");
 
     loginFormLink.click(function(e) {
         loginForm.delay(100).fadeIn(100);

@@ -1,21 +1,21 @@
 $(document).ready(function () {
-//    $("#postReview").on("click", function () {
-//        var commentInput = $("#reviewInput").val();
-//        $.ajax({
-//            type: 'POST',
-//            url: 'csrf/review',
-//            data: JSON.stringify({text: commentInput}),
-//            contentType: "application/json",
-//            dataType: 'json'
-//        }).then(
-//            function () {
-//                getChallenges();
-//                $("#commentInput").val('');
-//            }
-//        )
-//    });
+    //    $("#postReview").on("click", function () {
+    //        var commentInput = $("#reviewInput").val();
+    //        $.ajax({
+    //            type: 'POST',
+    //            url: 'csrf/review',
+    //            data: JSON.stringify({text: commentInput}),
+    //            contentType: "application/json",
+    //            dataType: 'json'
+    //        }).then(
+    //            function () {
+    //                getChallenges();
+    //                $("#commentInput").val('');
+    //            }
+    //        )
+    //    });
 
-    var html = '<li class="comment">' +
+    const html = '<li class="comment">' +
         '<div class="pull-left">' +
         '<img class="avatar" src="images/avatar1.png" alt="avatar"/>' +
         '</div>' +
@@ -33,8 +33,8 @@ $(document).ready(function () {
     function getChallenges() {
         $("#list").empty();
         $.get('csrf/review', function (result, status) {
-            for (var i = 0; i < result.length; i++) {
-                var comment = html.replace('USER', result[i].user);
+            for (let i = 0; i < result.length; i++) {
+                let comment = html.replace('USER', result[i].user);
                 comment = comment.replace('DATETIME', result[i].dateTime);
                 comment = comment.replace('COMMENT', result[i].text);
                 comment = comment.replace('STARS', result[i].stars);

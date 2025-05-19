@@ -1,6 +1,7 @@
 $(document).ready(function () {
+    let commentInput;
     $("#postComment").on("click", function () {
-        let commentInput = $("#commentInput").val();
+        commentInput = $("#commentInput").val();
         $.ajax({
             type: 'POST',
             url: 'CrossSiteScriptingStored/stored-xss',
@@ -15,7 +16,7 @@ $(document).ready(function () {
         )
     })
 
-    let html = '<li class="comment">' +
+    const html = '<li class="comment">' +
         '<div class="pull-left">' +
         '<img class="avatar" src="images/avatar1.png" alt="avatar"/>' +
         '</div>' +

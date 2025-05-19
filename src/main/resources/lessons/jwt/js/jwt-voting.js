@@ -1,6 +1,6 @@
 $(document).ready(function () {
     loginVotes('Guest');
-})
+});
 
 function loginVotes(user) {
     $("#name").text(user);
@@ -9,7 +9,7 @@ function loginVotes(user) {
         contentType: "application/json"
     }).always(function () {
         getVotings();
-    })
+    });
 }
 
 var html = '<a href="#" class="list-group-item ACTIVE">' +
@@ -62,17 +62,17 @@ function getVotings() {
 
             $("#votesList").append(voteTemplate);
         }
-    })
+    });
 }
 
 webgoat.customjs.jwtSigningCallback = function () {
     getVotings();
-}
+};
 
 function vote(title) {
     var user = $("#name").text();
     if (user === 'Guest') {
-        alert("As a guest you are not allowed to vote, please login first.")
+        alert("As a guest you are not allowed to vote, please login first.");
     } else {
         $.ajax({
             type: 'POST',
@@ -81,6 +81,6 @@ function vote(title) {
             function () {
                 getVotings();
             }
-        )
+        );
     }
 }
