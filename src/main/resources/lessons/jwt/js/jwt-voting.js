@@ -1,18 +1,18 @@
-$(document).ready(function () {
-    loginVotes('Guest');
-})
+$(document).ready(() => {
+  loginVotes('Guest');
+});
 
-function loginVotes(user) {
-    $("#name").text(user);
-    $.ajax({
-        url: 'JWT/votings/login?user=' + user,
-        contentType: "application/json"
-    }).always(function () {
-        getVotings();
-    })
+function loginVotes(_) {
+  $('#name').text(_);
+  $.ajax({
+    url: `JWT/votings/login?user=${ _}`,
+    contentType: 'application/json',
+  }).always(() => {
+    getVotings();
+  });
 }
 
-var html = '<a href="#" class="list-group-item ACTIVE">' +
+const html = '<a href="#" class="list-group-item ACTIVE">' +
     '<div class="media col-md-3">' +
     '<figure> ' +
     '<img class="media-object img-rounded" src="images/IMAGE_SMALL" alt="placehold.it/350x250"/>' +
@@ -39,48 +39,45 @@ var html = '<a href="#" class="list-group-item ACTIVE">' +
     '</a>';
 
 function getVotings() {
-    $("#votesList").empty();
-    $.get("JWT/votings", function (result, status) {
-        for (var i = 0; i < result.length; i++) {
-            var voteTemplate = html.replace('IMAGE_SMALL', result[i].imageSmall);
-            if (i === 0) {
-                voteTemplate = voteTemplate.replace('ACTIVE', 'active');
-                voteTemplate = voteTemplate.replace('BUTTON', 'btn-default');
-            } else {
-                voteTemplate = voteTemplate.replace('ACTIVE', '');
-                voteTemplate = voteTemplate.replace('BUTTON', 'btn-primary');
-            }
-            voteTemplate = voteTemplate.replace(/TITLE/g, result[i].title);
-            voteTemplate = voteTemplate.replace('INFORMATION', result[i].information || '');
-            voteTemplate = voteTemplate.replace('NO_VOTES', result[i].numberOfVotes || '');
-            voteTemplate = voteTemplate.replace('AVERAGE', result[i].average || '');
+  $('#votesList').empty();
+  $.get('JWT/votings', (result, _) => {
+    for (let i = 0; i < result.length; i++) {
+      let voteTemplate = html.replace('IMAGE_SMALL', result[i].imageSmall);
+      if (i === 0) {
+        voteTemplate = voteTemplate.replace('ACTIVE', 'active');
+        voteTemplate = voteTemplate.replace('BUTTON', 'btn-default');
+      } else {
+        voteTemplate = voteTemplate.replace('ACTIVE', '');
+        voteTemplate = voteTemplate.replace('BUTTON', 'btn-primary');
+      }
+      voteTemplate = voteTemplate.replace(/TITLE/g, result[i].title);
+      voteTemplate = voteTemplate.replace('INFORMATION', result[i].information || '');
+      voteTemplate = voteTemplate.replace('NO_VOTES', result[i].numberOfVotes || '');
+      voteTemplate = voteTemplate.replace('AVERAGE', result[i].average || '');
 
-            var hidden = (result[i].numberOfVotes === undefined ? 'hidden' : '');
-            voteTemplate = voteTemplate.replace(/HIDDEN_VIEW_VOTES/g, hidden);
-            hidden = (result[i].average === undefined ? 'hidden' : '');
-            voteTemplate = voteTemplate.replace(/HIDDEN_VIEW_RATING/g, hidden);
+      const hidden = (result[i].numberOfVotes === undefined ? 'hidden' : '');
+      voteTemplate = voteTemplate.replace(/HIDDEN_VIEW_VOTES/g, hidden);
+      voteTemplate = voteTemplate.replace(/HIDDEN_VIEW_RATING/g, hidden);
 
-            $("#votesList").append(voteTemplate);
-        }
-    })
+      $('#votesList').append(voteTemplate);
+    }
+  });
 }
 
 webgoat.customjs.jwtSigningCallback = function () {
-    getVotings();
-}
+  getVotings();
+};
 
 function vote(title) {
-    var user = $("#name").text();
-    if (user === 'Guest') {
-        alert("As a guest you are not allowed to vote, please login first.")
-    } else {
-        $.ajax({
-            type: 'POST',
-            url: 'JWT/votings/' + title
-        }).then(
-            function () {
-                getVotings();
-            }
-        )
-    }
+  const user = $('#name').text();
+  if (user === 'Guest') {
+    alert('As a guest you are not allowed to vote, please login first.');
+  } else {
+    $.ajax({
+      type: 'POST',
+      url: `JWT/votings/${ title}`,
+    }).then(() => {
+      getVotings();
+    });
+  }
 }
