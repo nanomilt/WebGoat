@@ -7,7 +7,7 @@ function login(user) {
         type: 'POST',
         url: 'JWT/refresh/login',
         contentType: "application/json",
-        data: JSON.stringify({user: user, password: "bm5nhSkxCXZkKRy4"})
+        data: JSON.stringify({ user: user, password: "bm5nhSkxCXZkKRy4" })
     }).success(
         function (response) {
             localStorage.setItem('access_token', response['access_token']);
@@ -16,23 +16,23 @@ function login(user) {
     )
 }
 
-//Dev comment: Pass token as header as we had an issue with tokens ending up in the access_log
+// Dev comment: Pass token as header as we had an issue with tokens ending up in the access_log
 webgoat.customjs.addBearerToken = function () {
-    var headers_to_set = {};
+    const headers_to_set = {};
     headers_to_set['Authorization'] = 'Bearer ' + localStorage.getItem('access_token');
     return headers_to_set;
 }
 
-//Dev comment: Temporarily disabled from page we need to work out the refresh token flow but for now we can go live with the checkout page
+// Dev comment: Temporarily disabled from page we need to work out the refresh token flow but for now we can go live with the checkout page
 function newToken() {
-    var refreshToken = localStorage.getItem('refresh_token');
+    const refreshToken = localStorage.getItem('refresh_token');
     $.ajax({
         headers: {
             'Authorization': 'Bearer ' + localStorage.getItem('access_token')
         },
         type: 'POST',
         url: 'JWT/refresh/newToken',
-        data: JSON.stringify({refreshToken: refreshToken})
+        data: JSON.stringify({ refreshToken })
     }).success(
         function (response) {
             localStorage.setItem('access_token', response['access_token']);

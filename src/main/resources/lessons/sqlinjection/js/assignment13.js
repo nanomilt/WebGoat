@@ -30,7 +30,7 @@ $(document).ready(function () {
     getServers('id');
 });
 
-var html = '<tr class="STATUS">' +
+const html = '<tr class="STATUS">' +
     '<td class="col-check"><input type="checkbox" class="form-check-input"/></td>' +
     '<td>HOSTNAME</td>' +
     '<td>IP</td>' +
@@ -40,20 +40,20 @@ var html = '<tr class="STATUS">' +
     '</tr>';
 
 function getServers(column) {
-    $.get("SqlInjectionMitigations/servers?column=" + column, function (result, status) {
+    $.get("SqlInjectionMitigations/servers?column=" + column, function (result, _) {
         $("#servers").empty();
-        for (var i = 0; i < result.length; i++) {
-            var server = html.replace('ID', result[i].id);
-            var serverStatus = "success";
+        for (let i = 0; i < result.length; i++) {
+            let server = html.replace('ID', result[i].id || '');
+            let serverStatus = "success";
             if (result[i].status === 'offline') {
                 serverStatus = "danger";
             }
             server = server.replace('ONLINE', serverStatus);
             server = server.replace('STATUS', serverStatus);
-            server = server.replace('HOSTNAME', result[i].hostname);
-            server = server.replace('IP', result[i].ip);
-            server = server.replace('MAC', result[i].mac);
-            server = server.replace('DESCRIPTION', result[i].description);
+            server = server.replace('HOSTNAME', result[i].hostname || '');
+            server = server.replace('IP', result[i].ip || '');
+            server = server.replace('MAC', result[i].mac || '');
+            server = server.replace('DESCRIPTION', result[i].description || '');
             $("#servers").append(server);
         }
 
