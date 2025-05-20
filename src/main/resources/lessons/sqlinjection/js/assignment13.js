@@ -1,36 +1,36 @@
-$(function () {
-    $('.col-check').hide();
-    $('#btn-admin').on('click', function () {
-        if ($("#toolbar-admin").is(":visible")) {
-            $("#toolbar-admin").hide();
-            $(".col-check").hide();
-        }
-        else {
-            $("#toolbar-admin").show();
-            $(".col-check").show();
-        }
-    });
+$(() => {
+  $('.col-check').hide();
+  $('#btn-admin').on('click', () => {
+    if ($('#toolbar-admin').is(':visible')) {
+      $('#toolbar-admin').hide();
+      $('.col-check').hide();
+    }
+    else {
+      $('#toolbar-admin').show();
+      $('.col-check').show();
+    }
+  });
 
-    $('#btn-online').on('click', function () {
-        $('table tr').filter(':has(:checkbox:checked)').find('td').parent().removeClass().addClass('success');
-        $('table tr').filter(':has(:checkbox:checked)').find('td.status').text('online');
-    });
-    $('#btn-offline').on('click', function () {
-        $('table tr').filter(':has(:checkbox:checked)').find('td').parent().removeClass().addClass('warning');
-        $('table tr').filter(':has(:checkbox:checked)').find('td.status').text('offline');
-    });
-    $('#btn-out-of-order').on('click', function () {
-        $('table tr').filter(':has(:checkbox:checked)').find('td').parent().removeClass().addClass('danger');
-        $('table tr').filter(':has(:checkbox:checked)').find('td.status').text('out of order');
-    });
+  $('#btn-online').on('click', () => {
+    $('table tr').filter(':has(:checkbox:checked)').find('td').parent().removeClass().addClass('success');
+    $('table tr').filter(':has(:checkbox:checked)').find('td.status').text('online');
+  });
+  $('#btn-offline').on('click', () => {
+    $('table tr').filter(':has(:checkbox:checked)').find('td').parent().removeClass().addClass('warning');
+    $('table tr').filter(':has(:checkbox:checked)').find('td.status').text('offline');
+  });
+  $('#btn-out-of-order').on('click', () => {
+    $('table tr').filter(':has(:checkbox:checked)').find('td').parent().removeClass().addClass('danger');
+    $('table tr').filter(':has(:checkbox:checked)').find('td.status').text('out of order');
+  });
 
 });
 
-$(document).ready(function () {
-    getServers('id');
+$(document).ready(() => {
+  getServers('id');
 });
 
-var html = '<tr class="STATUS">' +
+const html = '<tr class="STATUS">' +
     '<td class="col-check"><input type="checkbox" class="form-check-input"/></td>' +
     '<td>HOSTNAME</td>' +
     '<td>IP</td>' +
@@ -40,22 +40,22 @@ var html = '<tr class="STATUS">' +
     '</tr>';
 
 function getServers(column) {
-    $.get("SqlInjectionMitigations/servers?column=" + column, function (result, status) {
-        $("#servers").empty();
-        for (var i = 0; i < result.length; i++) {
-            var server = html.replace('ID', result[i].id);
-            var serverStatus = "success";
-            if (result[i].status === 'offline') {
-                serverStatus = "danger";
-            }
-            server = server.replace('ONLINE', serverStatus);
-            server = server.replace('STATUS', serverStatus);
-            server = server.replace('HOSTNAME', result[i].hostname);
-            server = server.replace('IP', result[i].ip);
-            server = server.replace('MAC', result[i].mac);
-            server = server.replace('DESCRIPTION', result[i].description);
-            $("#servers").append(server);
-        }
+  $.get(`SqlInjectionMitigations/servers?column=${ column}`, (result, _) => { // Unused variable 'status' replaced with '_'
+    $('#servers').empty();
+    for (let i = 0; i < result.length; i++) {
+      let server = html.replace('ID', result[i].id || '');
+      let serverStatus = 'success';
+      if (result[i].status === 'offline') {
+        serverStatus = 'danger';
+      }
+      server = server.replace('ONLINE', serverStatus);
+      server = server.replace('STATUS', serverStatus);
+      server = server.replace('HOSTNAME', result[i].hostname || '');
+      server = server.replace('IP', result[i].ip || '');
+      server = server.replace('MAC', result[i].mac || '');
+      server = server.replace('DESCRIPTION', result[i].description || '');
+      $('#servers').append(server);
+    }
 
-    });
+  });
 }

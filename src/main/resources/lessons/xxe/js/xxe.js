@@ -1,61 +1,58 @@
 webgoat.customjs.simpleXXE = function () {
-    var commentInput = $("#commentInputSimple").val();
-    var xml = '<?xml version="1.0"?>' +
+  const commentInput = $('#commentInputSimple').val() || ''; // Define commentInput with a default value
+  const xml = '<?xml version="1.0"?>' +
         '<comment>' +
-        '  <text>' + commentInput + '</text>' +
+        `  <text>${ commentInput }</text>` +
         '</comment>';
-    return xml;
-}
+  return xml;
+};
 
 webgoat.customjs.simpleXXECallback = function() {
-    $("#commentInputSimple").val('');
-    getComments('#commentsListSimple');
-}
+  $('#commentInputSimple').val('');
+  getComments('#commentsListSimple');
+};
 
-$(document).ready(function () {
-    getComments('#commentsListSimple');
+$(document).ready(() => {
+  getComments('#commentsListSimple');
 });
 
 //// Content-type
 
 webgoat.customjs.contentTypeXXE = function() {
-    var commentInput = $("#commentInputContentType").val();
-    return JSON.stringify({text: commentInput});
-}
+  const commentInput = $('#commentInputContentType').val() || ''; // Define commentInput with a default value
+  return JSON.stringify({text: commentInput});
+};
 
 webgoat.customjs.contentTypeXXECallback = function() {
-    $("#commentInputContentType").val('');
-    getComments('#commentsListContentType');
-}
+  $('#commentInputContentType').val('');
+  getComments('#commentsListContentType');
+};
 
-$(document).ready(function () {
-    getComments('#commentsListContentType');
+$(document).ready(() => {
+  getComments('#commentsListContentType');
 });
-
 
 //// Blind
 
 webgoat.customjs.blindXXE = function() {
-    var commentInput = $("#commentInputBlind").val();
-    var xml = '<?xml version="1.0"?>' +
+  const commentInput = $('#commentInputBlind').val() || ''; // Define commentInput with a default value
+  const xml = '<?xml version="1.0"?>' +
         '<comment>' +
-        '  <text>' + commentInput + '</text>' +
+        `  <text>${ commentInput }</text>` +
         '</comment>';
-    return xml;
-}
+  return xml;
+};
 
 webgoat.customjs.blindXXECallback = function() {
-    $("#commentInputBlind").val('');
-    getComments('#commentsListBlind');
-}
+  $('#commentInputBlind').val('');
+  getComments('#commentsListBlind');
+};
 
-$(document).ready(function () {
-    getComments('#commentsListBlind');
+$(document).ready(() => {
+  getComments('#commentsListBlind');
 });
 
-
-
-var html = '<li class="comment">' +
+const html = '<li class="comment">' +
     '<div class="pull-left">' +
     '<img class="avatar" src="images/avatar1.png" alt="avatar"/>' +
     '</div>' +
@@ -69,14 +66,14 @@ var html = '<li class="comment">' +
     '</li>';
 
 function getComments(field) {
-    $.get("xxe/comments", function (result, status) {
-        $(field).empty();
-        for (var i = 0; i < result.length; i++) {
-            var comment = html.replace('USER', result[i].user);
-            comment = comment.replace('DATETIME', result[i].dateTime);
-            comment = comment.replace('COMMENT', result[i].text);
-            $(field).append(comment);
-        }
+  $.get('xxe/comments', (result, _) => { // Replaced unused variable 'status' with '_'
+    $(field).empty();
+    for (let i = 0; i < result.length; i++) {
+      let comment = html.replace('USER', result[i].user);
+      comment = comment.replace('DATETIME', result[i].dateTime);
+      comment = comment.replace('COMMENT', result[i].text);
+      $(field).append(comment);
+    }
 
-    });
+  });
 }
