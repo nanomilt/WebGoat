@@ -1,17 +1,17 @@
 $(document).ready(() => {
-    var editor = ace.edit("editor");
-    editor.setTheme("ace/theme/monokai");
-    editor.session.setMode("ace/mode/java");
+  const editor = ace.edit('editor');
+  editor.setTheme('ace/theme/monokai');
+  editor.session.setMode('ace/mode/java');
 
-    editor.getSession().on("change", () => {
-        setTimeout(() => {
-            $("#codesubmit input[name='editor']").val(ace_collect());
-        }, 20);
-    });
+  editor.getSession().on('change', () => {
+    setTimeout(() => {
+      $("#codesubmit input[name='editor']").val(aceCollect());
+    }, 20);
+  });
 });
 
-function ace_collect() {
-    var editor = ace.edit("editor");
-    var code = editor.getValue();
-    return code;
+function aceCollect() {
+  const editor = ace.edit('editor');
+  const code = editor.getValue();
+  return code;
 }

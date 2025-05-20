@@ -1,5 +1,5 @@
-$(document).ready(
-		function(){
-				$("#secrettoken").load('JWT/secret/gettoken');
-		}
-);
+// FIXED_CODE
+
+$(document).ready(() => {
+  $('#secrettoken').load('JWT/secret/gettoken');
+});
