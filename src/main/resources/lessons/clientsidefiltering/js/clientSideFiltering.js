@@ -1,8 +1,7 @@
-var dataFetched = false;
+let dataFetched = false;
 
 function selectUser() {
-
-    var newEmployeeID = $("#UserSelect").val();
+    const newEmployeeID = $("#UserSelect").val();
     document.getElementById("employeeRecord").innerHTML = document.getElementById(newEmployeeID).innerHTML;
 }
 
@@ -14,8 +13,8 @@ function fetchUserData() {
 }
 
 function ajaxFunction(userId) {
-    $.get("clientSideFiltering/salaries?userId=" + userId, function (result, status) {
-        var html = "<table border = '1' width = '90%' align = 'center'";
+    $.get("clientSideFiltering/salaries?userId=" + userId, function (result, _) {
+        let html = "<table border = '1' width = '90%' align = 'center'";
         html = html + '<tr>';
         html = html + '<td>UserID</td>';
         html = html + '<td>First Name</td>';
@@ -23,7 +22,7 @@ function ajaxFunction(userId) {
         html = html + '<td>SSN</td>';
         html = html + '<td>Salary</td>';
 
-        for (var i = 0; i < result.length; i++) {
+        for (let i = 0; i < result.length; i++) {
             html = html + '<tr id = "' + result[i].UserID + '">';
             html = html + '<td>' + result[i].UserID + '</td>';
             html = html + '<td>' + result[i].FirstName + '</td>';
@@ -34,9 +33,9 @@ function ajaxFunction(userId) {
         }
         html = html + '</table>';
 
-        var newdiv = document.createElement("div");
+        const newdiv = document.createElement("div");
         newdiv.innerHTML = html;
-        var container = document.getElementById("hiddenEmployeeRecords");
+        const container = document.getElementById("hiddenEmployeeRecords");
         container.appendChild(newdiv);
     });
 }
