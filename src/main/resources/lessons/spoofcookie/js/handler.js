@@ -14,19 +14,15 @@ function cleanup() {
 	$('#spoof_attack_output').html('');
 }
 
-var target = document.getElementById('spoof_attack_feedback');
+const target = document.getElementById('spoof_attack_feedback');
 
-var obs = new MutationObserver(function(mutations) {
-	mutations.forEach(function() {
-		var cookie = getCookieValue();
-		if (cookie !== null) {
-			$('#spoof_username').prop('disabled', true);
-			$('#spoof_password').prop('disabled', true);
-			$('#spoof_submit').prop('disabled', true);
-		}
-	});
+const obs = new MutationObserver(function(_) {
+	const cookie = getCookieValue();
+	if (cookie !== null) {
+		$('#spoof_username').prop('disabled', true);
+		$('#spoof_password').prop('disabled', true);
+		$('#spoof_submit').prop('disabled', true);
+	}
 });
 
 obs.observe(target, { characterData: false, attributes: false, childList: true, subtree: false });
-
-var unusedVar; // This line is added to address the 'no-unused-vars' rule violation

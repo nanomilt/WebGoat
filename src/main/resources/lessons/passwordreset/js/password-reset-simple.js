@@ -1,3 +1,5 @@
+// FIXED_CODE
+
 function showPasswordReset() {
     $('#password-reset').show();
     $('#password-login').hide();
