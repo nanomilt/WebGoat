@@ -2,10 +2,10 @@ $(document).ready(function () {
     loginVotes('Guest');
 })
 
-function loginVotes(user) {
-    $("#name").text(user);
+function loginVotes(_) {
+    $("#name").text(_);
     $.ajax({
-        url: 'JWT/votings/login?user=' + user,
+        url: 'JWT/votings/login?user=' + _,
         contentType: "application/json"
     }).always(function () {
         getVotings();
@@ -40,7 +40,7 @@ var html = '<a href="#" class="list-group-item ACTIVE">' +
 
 function getVotings() {
     $("#votesList").empty();
-    $.get("JWT/votings", function (result, status) {
+    $.get("JWT/votings", function (result, _) {
         for (var i = 0; i < result.length; i++) {
             var voteTemplate = html.replace('IMAGE_SMALL', result[i].imageSmall);
             if (i === 0) {

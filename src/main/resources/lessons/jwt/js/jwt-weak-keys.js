@@ -1,5 +1,4 @@
-$(document).ready(
-		function(){
-				$("#secrettoken").load('JWT/secret/gettoken');
-		}
-);
+$(document).ready(function(){
+    let secrettoken = $("#secrettoken");
+    secrettoken.load('JWT/secret/gettoken');
+});
