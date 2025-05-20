@@ -3,8 +3,8 @@ function startFollowing(user) {
     $.ajax({
         type: 'POST',
         url: 'JWT/kid/follow/' + user
-    }).then(function (res) {
-        result = res;
+    }).then(function (_) {
+        result = _;
         $("#toast").append(result);
     })
 }

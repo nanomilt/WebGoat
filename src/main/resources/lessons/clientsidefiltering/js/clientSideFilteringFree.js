@@ -14,7 +14,7 @@ $(document).ready(function () {
 
     //-- Click on QUANTITY
     $(".btn-minus").on("click", function () {
-        var now = $(".quantity").val();
+        let now = $(".quantity").val();
         if ($.isNumeric(now)) {
             if (parseInt(now) - 1 > 0) {
                 now--;
@@ -28,7 +28,7 @@ $(document).ready(function () {
         calculate();
     })
     $(".btn-plus").on("click", function () {
-        var now = $(".quantity").val();
+        let now = $(".quantity").val();
         if ($.isNumeric(now)) {
             $(".quantity").val(parseInt(now) + 1);
         } else {
@@ -37,9 +37,9 @@ $(document).ready(function () {
         calculate();
     })
     $(".checkoutCode").on("blur", function () {
-        var checkoutCode = $(".checkoutCode").val();
-        $.get("clientSideFiltering/challenge-store/coupons/" + checkoutCode, function (result, status) {
-            var discount = result.discount;
+        let checkoutCode = $(".checkoutCode").val();
+        $.get("clientSideFiltering/challenge-store/coupons/" + checkoutCode, function (result, _) {
+            let discount = result.discount;
             if (discount > 0) {
                 $('#discount').text(discount);
                 calculate();
@@ -51,11 +51,10 @@ $(document).ready(function () {
     })
 
     function calculate() {
-        var d = $('#discount').text();
-        var quantity = parseInt($(".quantity").val());
+        let d = $('#discount').text();
+        let quantity = parseInt($(".quantity").val());
         if (d > 0) {
             $('#price').text((quantity * (899 - (899 * d / 100))).toFixed(2));
-
         } else {
             $('#price').text(quantity * 899);
         }
