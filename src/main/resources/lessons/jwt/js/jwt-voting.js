@@ -12,7 +12,7 @@ function loginVotes(user) {
     })
 }
 
-var html = '<a href="#" class="list-group-item ACTIVE">' +
+let html = '<a href="#" class="list-group-item ACTIVE">' +
     '<div class="media col-md-3">' +
     '<figure> ' +
     '<img class="media-object img-rounded" src="images/IMAGE_SMALL" alt="placehold.it/350x250"/>' +
@@ -40,9 +40,9 @@ var html = '<a href="#" class="list-group-item ACTIVE">' +
 
 function getVotings() {
     $("#votesList").empty();
-    $.get("JWT/votings", function (result, status) {
-        for (var i = 0; i < result.length; i++) {
-            var voteTemplate = html.replace('IMAGE_SMALL', result[i].imageSmall);
+    $.get("JWT/votings", function (result, _) {
+        for (let i = 0; i < result.length; i++) {
+            let voteTemplate = html.replace('IMAGE_SMALL', result[i].imageSmall || '');
             if (i === 0) {
                 voteTemplate = voteTemplate.replace('ACTIVE', 'active');
                 voteTemplate = voteTemplate.replace('BUTTON', 'btn-default');
@@ -50,12 +50,12 @@ function getVotings() {
                 voteTemplate = voteTemplate.replace('ACTIVE', '');
                 voteTemplate = voteTemplate.replace('BUTTON', 'btn-primary');
             }
-            voteTemplate = voteTemplate.replace(/TITLE/g, result[i].title);
+            voteTemplate = voteTemplate.replace(/TITLE/g, result[i].title || '');
             voteTemplate = voteTemplate.replace('INFORMATION', result[i].information || '');
             voteTemplate = voteTemplate.replace('NO_VOTES', result[i].numberOfVotes || '');
             voteTemplate = voteTemplate.replace('AVERAGE', result[i].average || '');
 
-            var hidden = (result[i].numberOfVotes === undefined ? 'hidden' : '');
+            let hidden = (result[i].numberOfVotes === undefined ? 'hidden' : '');
             voteTemplate = voteTemplate.replace(/HIDDEN_VIEW_VOTES/g, hidden);
             hidden = (result[i].average === undefined ? 'hidden' : '');
             voteTemplate = voteTemplate.replace(/HIDDEN_VIEW_RATING/g, hidden);
@@ -70,17 +70,15 @@ webgoat.customjs.jwtSigningCallback = function () {
 }
 
 function vote(title) {
-    var user = $("#name").text();
+    const user = $("#name").text() || 'Guest';
     if (user === 'Guest') {
         alert("As a guest you are not allowed to vote, please login first.")
     } else {
         $.ajax({
             type: 'POST',
             url: 'JWT/votings/' + title
-        }).then(
-            function () {
-                getVotings();
-            }
-        )
+        }).then(function () {
+            getVotings();
+        })
     }
 }

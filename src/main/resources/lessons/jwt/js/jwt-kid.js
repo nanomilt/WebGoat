@@ -1,10 +1,10 @@
 function startFollowing(user) {
-    let result;
+    let result = null; // Defining result with a default value
     $.ajax({
         type: 'POST',
         url: 'JWT/kid/follow/' + user
-    }).then(function (res) {
-        result = res;
+    }).then(function (response) {
+        result = response;
         $("#toast").append(result);
     })
 }
