@@ -1,5 +1,5 @@
-$(document).ready(
-		function(){
-				$("#secrettoken").load('JWT/secret/gettoken');
-		}
-);
+let undefined; // Defining the undefined variable based on the code
+
+$(document).ready(() => {
+  $('#secrettoken').load('JWT/secret/gettoken');
+});

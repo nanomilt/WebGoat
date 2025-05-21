@@ -1,10 +1,11 @@
+let result;
+
 function startFollowing(user) {
-    let result;
-    $.ajax({
-        type: 'POST',
-        url: 'JWT/kid/follow/' + user
-    }).then(function (res) {
-        result = res;
-        $("#toast").append(result);
-    })
+  $.ajax({
+    type: 'POST',
+    url: `JWT/kid/follow/${ user}`,
+  }).then((res) => {
+    result = res;
+    $('#toast').append(result);
+  });
 }
