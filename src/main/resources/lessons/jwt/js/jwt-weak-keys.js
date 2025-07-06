@@ -1,5 +1,10 @@
+// FIXED_CODE
+
 $(document).ready(
-		function(){
-				$("#secrettoken").load('JWT/secret/gettoken');
-		}
+  () =>{
+    let token;
+    $('#secrettoken').load('JWT/secret/gettoken', (response) => {
+      token = response;
+    });
+  },
 );
